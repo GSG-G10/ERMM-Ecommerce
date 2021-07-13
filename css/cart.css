@@ -1,4 +1,4 @@
-
+/* Product component style */
 *{
     box-sizing: border-box;
 }
@@ -60,3 +60,4 @@ img{
 .product-detaile__remove-icon i:hover{
     color:red
 }
+/* Product component style */

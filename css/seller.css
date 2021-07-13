@@ -1,4 +1,4 @@
-
+/* Product component style */
 .product{
     display: flex;
     flex-direction: column;
@@ -58,3 +58,4 @@
 .product-detaile__remove-icon i:hover{
     color:red
 }
+/* Product component style */

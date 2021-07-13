@@ -1,4 +1,4 @@
-
+/* Product component style */
 .product{
     display: flex;
     flex-direction: column;
@@ -41,3 +41,4 @@
     padding-right: 2rem;
     cursor: pointer;
 }
+/* Product component style */

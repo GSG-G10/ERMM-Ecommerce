@@ -1,6 +1,6 @@
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
-const createProductComponent = function(id,url,alternative,title,categorie,price){
+const createProductComponent = function(id,url,title,categorie,price){
    const productContainer = document.createElement("div")
     productContainer.setAttribute("class",`product  ${id}`)
     productContainer.setAttribute("id",`${id}`)
@@ -10,7 +10,7 @@ const createProductComponent = function(id,url,alternative,title,categorie,price
 
     const image = document.createElement("img")
     image.src = url
-    image.alt = alternative
+    image.alt = title + categorie
    imageContainer.appendChild(image)
 
     const productDetails = document.createElement("div")
