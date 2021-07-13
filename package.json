@@ -1,0 +1,23 @@
+{
+  "name": "ERMM-Ecommerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GSG-G10/ERMM-Ecommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GSG-G10/ERMM-Ecommerce/issues"
+  },
+  "homepage": "https://github.com/GSG-G10/ERMM-Ecommerce#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
