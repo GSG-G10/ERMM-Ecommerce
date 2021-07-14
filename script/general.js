@@ -2,7 +2,7 @@
 const searchButton = document.getElementById('search-button');
 const searchInput = document.getElementById('searchInput');
 const productsSection = document.getElementById("products");
-const products = localStorage.getItem('products');
+const productsLocalStorage = localStorage.getItem('products');
 const cleardate = (myNode) => {
   while (myNode.firstChild) {
     myNode.removeChild(myNode.firstChild);
@@ -10,7 +10,7 @@ const cleardate = (myNode) => {
 };
 searchButton.addEventListener('click', () =>{
  const nameProduct =  searchInput.value;
- const filterProduct = getProduct(nameProduct,products);
+ const filterProduct = getProduct(nameProduct,productsLocalStorage);
   cleardate(productsSection);
  filterProduct.forEach(function(product){
      createProductComponent(product.id,product.url,product.title,product.categorie,product.price);
