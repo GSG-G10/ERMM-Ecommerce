@@ -20,7 +20,8 @@ const addtoCart = productId => {
 };
 //createProductComponent help you creating product component 
 const products = document.querySelector("#products");
-const createProductComponent = function(id, url, title, categorie, price) {
+const createProductComponent = function({id, img:url, name:title, categorie, price}) {
+    console.log({id, url, title, categorie, price})
     const productContainer = document.createElement("div")
     productContainer.setAttribute("class", `product  ${id}`)
 
@@ -30,6 +31,7 @@ const createProductComponent = function(id, url, title, categorie, price) {
     const image = document.createElement("img")
     image.src = url
     imageContainer.appendChild(image)
+    image.style.width ="400px"
 
     const productDetails = document.createElement("div")
     productDetails.setAttribute("class", `product__product-detaile`)
@@ -55,10 +57,17 @@ const createProductComponent = function(id, url, title, categorie, price) {
 
     const addProductIcon = document.createElement("button")
     addProductIcon.setAttribute("class", `product-detaile__add-icon`)
+    addProductIcon.addEventListener('click', ()=>{
+        addtoCart(id)
+    })
+
 
     const iconShopping = document.createElement("i")
     iconShopping.setAttribute("class", `icon-shopping-cart`)
     addProductIcon.appendChild(iconShopping)
+    iconShopping.addEventListener('click', ()=>{
+        console.log(1)
+    })
 
     productIcon.appendChild(productPrice)
     productIcon.appendChild(addProductIcon)
@@ -73,5 +82,6 @@ const createProductComponent = function(id, url, title, categorie, price) {
 }
 const products1 = JSON.parse(localStorage.getItem("Products"))
 products1.forEach(function(product) {
-    createProductComponent(product.id, product.url, product.title, product.category, product.price)
+    // console.log(product)
+    createProductComponent(product)
 })
