@@ -1,4 +1,4 @@
-let allProducts = localStorage.getItem("products")
+const allProducts = localStorage.getItem("products")
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
 const createProductComponent = function(id,url,title,categorie,price){
@@ -43,7 +43,7 @@ const createProductComponent = function(id,url,title,categorie,price){
     const iconRemove = document.createElement("i")
     iconRemove.setAttribute("class",`icon-archive`)
     removeProductIcon.appendChild(iconRemove)
-    iconRemove.addEventListener("click", () => {
+        removeIcon.addEventListener("click", () => {
         deleteProductDisplay(id)
     });
 
@@ -70,10 +70,10 @@ const cleardata = (myNode) => {
   };
 
 function deleteProductDisplay (deletedId) {
-    allProducts = JSON.parse(localStorage.getItem("products"));
+    const allProducts = JSON.parse(localStorage.getItem("products"));
     allProducts = deletingProduct(deletedId, allProducts);
     localStorage.setItem("products", JSON.stringify(allProducts));
-    cleardata(Products)
+    cleardata(products)
     allProducts.forEach((element) => {
       createProductComponent(
         element.id,

@@ -4,6 +4,9 @@ const deletingProduct = (id, array) => {
   });
   return newArray;
 };
+
+const addProduct = (products, product) => [...products, product];
+
 module.exports = {
-  deletingProduct,
+  deletingProduct, addProduct 
 };
