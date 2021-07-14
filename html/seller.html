@@ -33,10 +33,10 @@
                     <div class="dropdown">
                         <button class="dropbtn">Category <i class="down-arrow"></i></button>
                         <div id="dropdown-items">
-                            <a href="#">Music</a>
-                            <a href="#">TV</a>
-                            <a href="#">Weather</a>
-                            <a href="#">Sounds</a>
+                            <a href="#" onclick="dropItem1(this)">Music</a>
+                            <a href="#" onclick="dropItem1(this)">TV</a>
+                            <a href="#" onclick="dropItem1(this)">Weather</a>
+                            <a href="#" onclick="dropItem1(this)">Sounds</a>
                         </div>
                     </div>
                     <span></span>
@@ -45,10 +45,10 @@
                     <div class="dropdown1">
                         <button class="dropbtn1">Price <i class="down-arrow"></i></button>
                         <div id="dropdown-items1">
-                            <a href="#">Music</a>
-                            <a href="#">TV</a>
-                            <a href="#">Weather</a>
-                            <a href="#">Sounds</a>
+                            <a href="#" onclick="dropItem2(this)">Music</a>
+                            <a href="#" onclick="dropItem2(this)">TV</a>
+                            <a href="#" onclick="dropItem2(this)">Weather</a>
+                            <a href="#" onclick="dropItem2(this)">Sounds</a>
                         </div>
                     </div>
                     <span></span>
@@ -85,6 +85,20 @@
 
         const clicked2 = (x) => {
             x.classList.toggle("clicked1");
+        };
+
+        const dropItem1 = (x) => {
+            const item = document.querySelector("#dropItem");
+            if (item)
+                item.removeAttribute("id");
+            x.setAttribute("id", "dropItem");
+        };
+
+        const dropItem2 = (x) => {
+            const item = document.querySelector("#dropItem1");
+            if (item)
+                item.removeAttribute("id");
+            x.setAttribute("id", "dropItem1");
         };
     </script>
 </body>

@@ -78,8 +78,10 @@
     display: block;
 }
 
-#dropdown-items a:hover {
-    background-color: white;
+#dropdown-items a:hover,
+#dropItem,
+#dropItem1 {
+    background-color: white !important;
     color: #334257;
 }
 
