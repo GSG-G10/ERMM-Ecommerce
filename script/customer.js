@@ -55,27 +55,7 @@ const createProductComponent = function(id,url,title,categorie,price){
     productContainer.appendChild(productDetails)
     products.appendChild(productContainer)
 }
-<<<<<<< HEAD
-//test
-const createProduct = function(data){
-viweProduct = [...data];
-viweProduct.forEach(function(item){
-    const product = createProductComponent(item.id,item.image,item.name,item.details,item.category,item.price)
-    products.appendChild(product)
-})
-}
-// products.appendChild(createProductComponent(1,"https://images.pexels.com/photos/615302/nikon-lens-zoom-optics-615302.jpeg",",,mnbhbgbg",`LEICA M (TYP 240) EDITION "LEICA 60"`,`Film Cameras.`,`$18,500`))
-
-// get prevent form submit =============
-const form = document.querySelector("#search-form");
-const searchInput = document.querySelector("#search-input");
-form.addEventListener("submit",function(event){
-    event.preventDefault();
-    // using getProduct 
-})
-=======
 const products = localStorage.getItem("products")
 products.forEach(function(product){
     createProductComponent(product.id,product.url,product.title,product.category,product.price)
 })
->>>>>>> 20-refact
