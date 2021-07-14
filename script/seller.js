@@ -2,6 +2,7 @@ let prodcutsId = localStorage.getItem("id") ? localStorage.getItem("id") - 0 : 0
 
 const fetchProducts = () => JSON.parse(localStorage.getItem("Products"));
 
+
 const fetchProduct = stringProduct => JSON.parse(stringProduct);
 
 const addProductDom = stringProduct => {
@@ -23,7 +24,7 @@ const addproductJson = () => {
     tempProduct.name = pName;
     tempProduct.img = pImg;
     tempProduct.price = pPrice;
-    tempProduct.category = pCategory;
+    tempProduct.category = pCategory;   
     addProductDom(JSON.stringify(tempProduct));
 };
 
@@ -84,6 +85,34 @@ const createProductComponent = function(id, url, title, categorie, price) {
     products.appendChild(productContainer)
 }
 const products1 = localStorage.getItem("Products")
-products1.forEach(function(product) {
-    createProductComponent(product.id, product.url, product.title, product.category, product.price)
-})
+// products1.forEach(function (product) {
+//     createProductComponent(product.id, product.url, product.title, product.category, product.price)
+// })
+
+
+
+
+const items = () => JSON.parse(localStorage.getItem("Products"));
+
+const editButton = document.getElementById('editBtn')
+
+const editProduct = (arr, id, newData) => arr.map((item) => {
+    if (item.id === id) {
+        return { ...newData, id: item.id };
+    } else {
+        return item;
+    }
+});
+
+
+const editItem = (id, newData) => {
+    return () => {
+        const products = JSON.parse(localStorage.getItem("Products"))
+        const newArr = editProduct(products, id, newData)
+        localStorage.setItem("Products", JSON.stringify(newArr))
+    }
+};
+
+editItem()
+module.exports = { editItem };
+
