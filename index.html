@@ -26,7 +26,7 @@
                     <span></span>
                 </li>
 
-                <li class="dropdownli">
+                <li class="dropdownli" onclick="clicked1(this)">
                     <div class="dropdown">
                         <button class="dropbtn">Category <i class="down-arrow"></i></button>
                         <div id="dropdown-items">
@@ -38,7 +38,7 @@
                     </div>
                     <span></span>
                 </li>
-                <li class="dropdownli1">
+                <li class="dropdownli1" onclick="clicked2(this)">
                     <div class="dropdown1">
                         <button class="dropbtn1">Price <i class="down-arrow"></i></button>
                         <div id="dropdown-items1">
@@ -73,6 +73,15 @@
 
         const myFunction1 = (x) => {
             x.classList.toggle("change1");
+        };
+
+        const clicked1 = (x) => {
+            x.classList.toggle("clicked");
+
+        };
+
+        const clicked2 = (x) => {
+            x.classList.toggle("clicked1");
         };
     </script>
 </body>

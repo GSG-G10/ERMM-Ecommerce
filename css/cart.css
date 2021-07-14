@@ -74,7 +74,7 @@
     z-index: 1;
 }
 
-.dropdownli:hover #dropdown-items {
+.clicked #dropdown-items {
     display: block;
 }
 
@@ -107,7 +107,7 @@
     z-index: 1;
 }
 
-.dropdownli1:hover #dropdown-items1 {
+.clicked1 #dropdown-items1 {
     display: block;
 }
 
