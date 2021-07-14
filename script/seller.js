@@ -3,7 +3,6 @@ const products =  document.querySelector("#products");
 const createProductComponent = function(id,url,title,categorie,price){
    const productContainer = document.createElement("div")
     productContainer.setAttribute("class",`product  ${id}`)
-    productContainer.setAttribute("id",`${id}`)
 
     const imageContainer = document.createElement("div")
     imageContainer.setAttribute("class",`product__image`)
@@ -18,6 +17,7 @@ const createProductComponent = function(id,url,title,categorie,price){
 
     const productTitle = document.createElement("h3")
     productTitle.setAttribute("class",`product-detaile__title`)
+    productTitle.setAttribute("id",`${id}-categorie`)
     const text = document.createTextNode(`${title}`)
     productTitle.appendChild(text)
 
@@ -29,14 +29,14 @@ const createProductComponent = function(id,url,title,categorie,price){
     const productIcon = document.createElement("div")
     productIcon.setAttribute("class",`product-detaile__tools`)
     
-   const editProductIcon = document.createElement("span")
+   const editProductIcon = document.createElement("button")
     editProductIcon.setAttribute("class",`product-detaile__edit-icon`)
 
     const iconEdit = document.createElement("i")
     iconEdit.setAttribute("class",`icon-edit`)
     editProductIcon.appendChild(iconEdit)
 
-    const removeProductIcon = document.createElement("span")
+    const removeProductIcon = document.createElement("button")
     removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
 
     const iconRemove = document.createElement("i")
@@ -52,5 +52,9 @@ const createProductComponent = function(id,url,title,categorie,price){
     
     productContainer.appendChild(imageContainer)
     productContainer.appendChild(productDetails)
-    return productContainer
+    products.appendChild(productContainer)
 }
+const products = localStorage.getItem("products")
+products.forEach(function(product){
+    createProductComponent(product.id,product.url,product.title,product.category,product.price)
+})
