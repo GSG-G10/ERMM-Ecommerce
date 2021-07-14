@@ -1,6 +1,3 @@
-//just for test 
-
-    let viweProduct = [];
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
 const createProductComponent = function(id,url,alternative,title,categorie,price){
@@ -37,15 +34,22 @@ const createProductComponent = function(id,url,alternative,title,categorie,price
     const priceNode = document.createTextNode(`${price}`)
     productPrice.appendChild(priceNode)
 
-    const addProductIcon = document.createElement("span")
-    addProductIcon.setAttribute("class",`product-detaile__add-icon`)
 
-    const iconShopping = document.createElement("i")
-    iconShopping.setAttribute("class",`icon-shopping-cart`)
-    addProductIcon.appendChild(iconShopping)
+    const deleteIcon = document.createElement("div")
+    deleteIcon.setAttribute("class",`product__delete-product`)
+
+
+    const removeProductIcon = document.createElement("span")
+    removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
+    
+  ////
+    const removeIcon = document.createElement("i")
+    removeIcon.setAttribute("class",`icon-archive`)
+    removeProductIcon.appendChild(removeIcon)
+    deleteIcon.appendChild(removeProductIcon)
 
     productIcon.appendChild(productPrice)
-    productIcon.appendChild(addProductIcon)
+    productIcon.appendChild(deleteIcon)
 
     productDetails.appendChild(productTitle)
     productDetails.appendChild(productCategorie)
@@ -55,20 +59,3 @@ const createProductComponent = function(id,url,alternative,title,categorie,price
     productContainer.appendChild(productDetails)
     return productContainer
 }
-//test
-const createProduct = function(data){
-viweProduct = [...data];
-viweProduct.forEach(function(item){
-    const product = createProductComponent(item.id,item.image,item.name,item.details,item.category,item.price)
-    products.appendChild(product)
-})
-}
-// products.appendChild(createProductComponent(1,"https://images.pexels.com/photos/615302/nikon-lens-zoom-optics-615302.jpeg",",,mnbhbgbg",`LEICA M (TYP 240) EDITION "LEICA 60"`,`Film Cameras.`,`$18,500`))
-
-// get prevent form submit =============
-const form = document.querySelector("#search-form");
-const searchInput = document.querySelector("#search-input");
-form.addEventListener("submit",function(event){
-    event.preventDefault();
-    // using getProduct 
-})
