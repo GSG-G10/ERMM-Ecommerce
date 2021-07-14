@@ -1,9 +1,6 @@
 const getProduct = require('./script/main.js');
 // getProduct test to check if the product is returned
-
-describe('Testing getProduct return specific product',()=>{
-	test('Should return array of product when given value search',()=>{
-		const actual = getProduct('camera', [
+const virtualArray =  [
     {
         id: 1, 
         name: "camera",
@@ -20,7 +17,10 @@ describe('Testing getProduct return specific product',()=>{
         image:"https://images.pexels.com/photos/615302/nikon-lens-zoom-optics-615302.jpeg",
         category :"people"
 
-      }]);
+      }];
+describe('Testing getProduct return specific product',()=>{
+	test('Should return array of product when given value search',()=>{
+		const actual = getProduct('camera',virtualArray);
 		const expected=[{
         id: 1, 
         name: "camera",
