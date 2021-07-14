@@ -55,7 +55,7 @@ const createProductComponent = function(id,url,title,categorie,price){
     productContainer.appendChild(productDetails)
     products.appendChild(productContainer)
 }
-const products = localStorage.getItem("products")
-products.forEach(function(product){
+const products1 = localStorage.getItem("products")
+products1.forEach(function(product){
     createProductComponent(product.id,product.url,product.title,product.category,product.price)
 })
