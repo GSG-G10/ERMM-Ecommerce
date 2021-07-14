@@ -1,3 +1,33 @@
+let prodcutsId = localStorage.getItem("id") ? localStorage.getItem("id") - 0 : 0;
+
+const fetchProducts = () => JSON.parse(localStorage.getItem("Products"));
+
+const fetchProduct = stringProduct => JSON.parse(stringProduct);
+
+const addProductDom = stringProduct => {
+    let tempProducts = fetchProducts();
+    const tempProduct = fetchProduct(stringProduct);
+    tempProduct.id = prodcutsId++;
+    localStorage.setItem("id", prodcutsId);
+    if (!tempProducts)
+        tempProducts = [];
+    localStorage.setItem("Products", JSON.stringify(addProduct(tempProducts, tempProduct)));
+};
+
+const addproductJson = () => {
+    const pName = document.querySelector(".add-form #name").value;
+    const pImg = document.querySelector(".add-form #img").value;
+    const pPrice = document.querySelector(".add-form #price").value;
+    const pCategory = document.querySelector(".add-form #Category").value;
+    const tempProduct = {};
+    tempProduct.name = pName;
+    tempProduct.img = pImg;
+    tempProduct.price = pPrice;
+    tempProduct.category = pCategory;
+    addProductDom(JSON.stringify(tempProduct));
+};
+
+
 const allProducts = localStorage.getItem("products")
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
