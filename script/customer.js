@@ -3,10 +3,9 @@
     let viweProduct = [];
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
-const createProductComponent = function(id,url,alternative,title,categorie,price){
+const createProductComponent = function(id,url,title,categorie,price){
    const productContainer = document.createElement("div")
     productContainer.setAttribute("class",`product  ${id}`)
-    productContainer.setAttribute("id",`${id}`)
 
     const imageContainer = document.createElement("div")
     imageContainer.setAttribute("class",`product__image`)
@@ -21,6 +20,7 @@ const createProductComponent = function(id,url,alternative,title,categorie,price
 
     const productTitle = document.createElement("h3")
     productTitle.setAttribute("class",`product-detaile__title`)
+    productTitle.setAttribute("id",`${id}-categorie`)
     const text = document.createTextNode(`${title}`)
     productTitle.appendChild(text)
 
@@ -32,12 +32,12 @@ const createProductComponent = function(id,url,alternative,title,categorie,price
     const productIcon = document.createElement("div")
     productIcon.setAttribute("class",`product-detaile__price-add`)
     
-    const productPrice = document.createElement("span")
+    const productPrice = document.createElement("button")
     productPrice.setAttribute("class",`product-detaile__price`)
     const priceNode = document.createTextNode(`${price}`)
     productPrice.appendChild(priceNode)
 
-    const addProductIcon = document.createElement("span")
+    const addProductIcon = document.createElement("button")
     addProductIcon.setAttribute("class",`product-detaile__add-icon`)
 
     const iconShopping = document.createElement("i")
@@ -53,8 +53,9 @@ const createProductComponent = function(id,url,alternative,title,categorie,price
     
     productContainer.appendChild(imageContainer)
     productContainer.appendChild(productDetails)
-    return productContainer
+    products.appendChild(productContainer)
 }
+<<<<<<< HEAD
 //test
 const createProduct = function(data){
 viweProduct = [...data];
@@ -72,3 +73,9 @@ form.addEventListener("submit",function(event){
     event.preventDefault();
     // using getProduct 
 })
+=======
+const products = localStorage.getItem("products")
+products.forEach(function(product){
+    createProductComponent(product.id,product.url,product.title,product.category,product.price)
+})
+>>>>>>> 20-refact
