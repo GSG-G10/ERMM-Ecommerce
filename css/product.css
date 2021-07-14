@@ -207,8 +207,8 @@
     #dropdown-items1 {
         width: 100px;
     }
-    #Products {
-        margin-top: 2px;
+    .active {
+        margin-top: 3px;
     }
     #dropdown-items a {
         top: 35px;
@@ -246,8 +246,8 @@
     .active {
         order: -1;
     }
-    .responsive li:not(#Products) {
-        display: flex;
+    .responsive li:not(.active) {
+        display: flex !important;
     }
 }
 
