@@ -13,6 +13,20 @@ const addProductDom = stringProduct => {
         tempProducts = [];
     localStorage.setItem("Products", JSON.stringify(addProduct(tempProducts, tempProduct)));
 };
+
+const addproductJson = () => {
+    const pName = document.querySelector(".add-form #name").value;
+    const pImg = document.querySelector(".add-form #img").value;
+    const pPrice = document.querySelector(".add-form #price").value;
+    const pCategory = document.querySelector(".add-form #Category").value;
+    const tempProduct = {};
+    tempProduct.name = pName;
+    tempProduct.img = pImg;
+    tempProduct.price = pPrice;
+    tempProduct.category = pCategory;
+    addProductDom(JSON.stringify(tempProduct));
+};
+
 //createProductComponent help you creating product component 
 const products = document.querySelector("#products");
 const createProductComponent = function(id, url, title, categorie, price) {
@@ -69,7 +83,7 @@ const createProductComponent = function(id, url, title, categorie, price) {
     productContainer.appendChild(productDetails)
     products.appendChild(productContainer)
 }
-const products = localStorage.getItem("products")
-products.forEach(function(product) {
+const products1 = localStorage.getItem("Products")
+products1.forEach(function(product) {
     createProductComponent(product.id, product.url, product.title, product.category, product.price)
 })
