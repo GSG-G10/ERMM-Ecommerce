@@ -1,3 +1,21 @@
+
+const searchButton = document.getElementById('search-button');
+const searchInput = document.getElementById('searchInput');
+const productsSection = document.getElementById("products");
+const products = localStorage.getItem('products');
+const cleardate = (myNode) => {
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.firstChild);
+  }
+};
+searchButton.addEventListener('click', () =>{
+ const nameProduct =  searchInput.value;
+ const filterProduct = getProduct(nameProduct,products);
+  cleardate(productsSection);
+ filterProduct.forEach(function(product){
+     createProductComponent(product.id,product.url,product.title,product.categorie,product.price);
+ })
+})
 const toggle1 = () => {
     const nav1 = document.body.querySelector(".nav1");
     if (nav1.className == "nav1")
