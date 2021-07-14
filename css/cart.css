@@ -57,6 +57,10 @@ img{
     display: flex;
     justify-content: flex-end;
 }
+.product-detaile__remove-icon{
+    background: transparent;
+    border: none;
+}
 .product-detaile__remove-icon i:hover{
     color:red
 }
