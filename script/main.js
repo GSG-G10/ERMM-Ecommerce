@@ -1,12 +1,9 @@
 const deletingProduct = (id, array) => {
-    const newArray = [...array]
-    newArray.forEach((ele, index) => {
-        if(ele.id == id){
-            newArray.splice(index, 1)
-        }          
-    })   
-    return newArray
-}
+  const newArray = array.filter((ele) => {
+    return ele.id !== id;
+  });
+  return newArray;
+};
 module.exports = {
-    deletingProduct
-}
+  deletingProduct,
+};
