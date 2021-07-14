@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+  
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(140deg,#548CA8,#334257);
+    padding: 10px;
+}
+
+.main-container{
+
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+      padding: 25px 30px;
+      border-radius: 8px;
+}
+.main-container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+
+}
+.main-container .title::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom:0 ;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(140deg,#548CA8,#334257);
+    
+}
+.main-container .add-form{
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+}
+
+
+.product-details .input-box input{
+    height: 45px;
+    width: 100%;
+
+}
+
+.product-details{
+ display: flex;
+ flex-wrap: wrap;   
+    justify-content: space-between;
+
+}
+
+.input-box{
+    width: 45%;
+    margin: 10px 0 ;
+}
+
+
+
+.data-input{
+    border-radius: 5px;
+    border-width: 0.05rem;
+}
+
+.bottom-button{
+    border-radius: 5px;
+    border-width: 0;
+    background:  linear-gradient(140deg,#548CA8,#496181);
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px 0 10px;
+    }
+
+
+.confirm-cancel-btns{
+    display: flex;
+    justify-content: center;
+}
+
+#textarea1{
+    width: 100%;
+    border-radius: 5px;
+    height: 80px;
+}
+
+
+@media only screen and (max-width: 750px) {
+
+    .product-details{
+        display: flex;
+        justify-content: center;     
+       }
+    .input-box{
+        width: 80%;
+        
+    }
+}
