@@ -11,7 +11,6 @@
 
 <body>
     <div class="boddy">
-
         <div class="main-container">
             <div class="title">Add Product</div>
             <form class="add-form" action="#">
@@ -19,13 +18,13 @@
                     <div class="input-box">
                         <label class="details">
                             Product Name
-                            <input class="data-input" type="text" placeholder=" product Name" required>
+                            <input class="data-input" type="text" placeholder=" product Name" id="name" required>
                         </label>
                     </div>
                     <div class="input-box">
                         <label class="details">
                             Product Image
-                            <input class="data-input" type="text" placeholder=" Image URL" required>
+                            <input class="data-input" type="text" placeholder=" Image URL" id="img" required>
                         </label>
                     </div>
                     <div id="category-select" class="input-box">
@@ -39,12 +38,11 @@
                             <option value="opel">category3</option>
                             <option value="audi">category4</option>
                           </select>
-
                     </div>
                     <div class="input-box">
                         <label class="details">
                             Product price
-                            <input class="data-input" type="text" placeholder=" $$$ " required>
+                            <input class="data-input" type="text" placeholder=" $$$ " id="price" required>
                         </label>
                     </div>
                     <div class="input-box">
@@ -57,14 +55,15 @@
             </form>
             <div class="confirm-cancel-btns">
 
-                <button id="confirm-add" class="bottom-button"> Confirm </button>
+                <button id="confirm-add" class="bottom-button" onclick="addproductJson()"> Confirm </button>
                 <button id="cancel" class="bottom-button"> Cancel </button>
             </div>
-
         </div>
 
 
     </div>
+    <script src="../script/main.js"></script>
+    <script src="../script/seller.js"></script>
 </body>
 
 </html>
