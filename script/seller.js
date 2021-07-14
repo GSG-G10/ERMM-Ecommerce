@@ -27,50 +27,55 @@ const addproductJson = () => {
     addProductDom(JSON.stringify(tempProduct));
 };
 
+
+const allProducts = localStorage.getItem("products")
 //createProductComponent help you creating product component 
-const products = document.querySelector("#products");
-const createProductComponent = function(id, url, title, categorie, price) {
-    const productContainer = document.createElement("div")
-    productContainer.setAttribute("class", `product  ${id}`)
+const products =  document.querySelector("#products");
+const createProductComponent = function(id,url,title,categorie,price){
+   const productContainer = document.createElement("div")
+    productContainer.setAttribute("class",`product  ${id}`)
 
     const imageContainer = document.createElement("div")
-    imageContainer.setAttribute("class", `product__image`)
+    imageContainer.setAttribute("class",`product__image`)
 
     const image = document.createElement("img")
     image.src = url
     image.alt = title + categorie
-    imageContainer.appendChild(image)
+   imageContainer.appendChild(image)
 
     const productDetails = document.createElement("div")
-    productDetails.setAttribute("class", `product__product-detaile`)
+    productDetails.setAttribute("class",`product__product-detaile`)
 
     const productTitle = document.createElement("h3")
-    productTitle.setAttribute("class", `product-detaile__title`)
-    productTitle.setAttribute("id", `${id}-categorie`)
+    productTitle.setAttribute("class",`product-detaile__title`)
+    productTitle.setAttribute("id",`${id}-categorie`)
     const text = document.createTextNode(`${title}`)
     productTitle.appendChild(text)
 
     const productCategorie = document.createElement("h4")
-    productCategorie.setAttribute("class", `product-detaile__category`)
+    productCategorie.setAttribute("class",`product-detaile__category`)
     const categorieNode = document.createTextNode(`${categorie}`)
     productCategorie.appendChild(categorieNode)
 
     const productIcon = document.createElement("div")
-    productIcon.setAttribute("class", `product-detaile__tools`)
-
-    const editProductIcon = document.createElement("button")
-    editProductIcon.setAttribute("class", `product-detaile__edit-icon`)
+    productIcon.setAttribute("class",`product-detaile__tools`)
+    
+   const editProductIcon = document.createElement("button")
+    editProductIcon.setAttribute("class",`product-detaile__edit-icon`)
 
     const iconEdit = document.createElement("i")
-    iconEdit.setAttribute("class", `icon-edit`)
+    iconEdit.setAttribute("class",`icon-edit`)
     editProductIcon.appendChild(iconEdit)
 
     const removeProductIcon = document.createElement("button")
-    removeProductIcon.setAttribute("class", `product-detaile__remove-icon`)
+    removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
 
     const iconRemove = document.createElement("i")
-    iconRemove.setAttribute("class", `icon-archive`)
+    iconRemove.setAttribute("class",`icon-archive`)
     removeProductIcon.appendChild(iconRemove)
+        removeIcon.addEventListener("click", () => {
+        deleteProductDisplay(id)
+    });
 
     productIcon.appendChild(editProductIcon)
     productIcon.appendChild(removeProductIcon)
@@ -78,12 +83,38 @@ const createProductComponent = function(id, url, title, categorie, price) {
     productDetails.appendChild(productTitle)
     productDetails.appendChild(productCategorie)
     productDetails.appendChild(productIcon)
-
+    
     productContainer.appendChild(imageContainer)
     productContainer.appendChild(productDetails)
     products.appendChild(productContainer)
 }
-const products1 = localStorage.getItem("Products")
-products1.forEach(function(product) {
-    createProductComponent(product.id, product.url, product.title, product.category, product.price)
+
+products.forEach(function(product){
+    createProductComponent(product.id,product.url,product.title,product.category,product.price)
 })
+
+const cleardata = (myNode) => {
+    while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+    }
+  };
+
+function deleteProductDisplay (deletedId) {
+    const allProducts = JSON.parse(localStorage.getItem("products"));
+    allProducts = deletingProduct(deletedId, allProducts);
+    localStorage.setItem("products", JSON.stringify(allProducts));
+    cleardata(products)
+    allProducts.forEach((element) => {
+      createProductComponent(
+        element.id,
+        element.url,
+        element.title,
+        element.categorie,
+        element.price
+      );
+    });
+  }
+
+
+
+
