@@ -36,19 +36,19 @@ const virtualArray =  [
 
       }];
 describe('Testing getProduct return specific product',()=>{
-	// test('Should return array of product when given value search',()=>{
-	// 	const actual = getProduct('camera',virtualArray);
-	// 	const expected=[{
-  //       id: 1, 
-  //       name: "camera",
-  //       details: "cameraaaa",
-  //       price: 12,
-  //       image:"https://images.pexels.com/photos/615302/nikon-lens-zoom-optics-615302.jpeg",
-  //       category :"animal"
-  //     }];
-  //   expect(actual).toEqual(expected);
+	test('Should return array of product when given value search',()=>{
+		const actual = getProduct('camera',virtualArray);
+		const expected=[{
+        id: 1, 
+        name: "camera",
+        details: "cameraaaa",
+        price: 12,
+        image:"https://images.pexels.com/photos/615302/nikon-lens-zoom-optics-615302.jpeg",
+        category :"animal"
+      }];
+    expect(actual).toEqual(expected);
 		
-	// });
+	});
 
 
 
