@@ -165,11 +165,19 @@
 
 .dropdownli {
     font-weight: bold;
-    margin-left: auto;
+    margin-left: 0px;
 }
 
 .dropdownli1 {
     font-weight: bold;
+    margin-left: 0px;
+}
+
+#Grid {
+    margin-left: auto;
+}
+
+#List {
     margin-left: 0px;
 }
 
