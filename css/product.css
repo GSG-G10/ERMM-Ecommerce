@@ -1,3 +1,49 @@
+<<<<<<< HEAD
+/* Product component style */
+.product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    width: 20.33%;
+    margin: 5rem;
+    padding: 1rem;
+    transition: all .3s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.product:hover{
+   
+    box-shadow: 0 3px 5px 0 rgb(0 0 0 / 50%);
+}
+.product__image{
+        max-width: 100%;
+}
+.product-detaile__title{
+   font-size: .95rem;
+    line-height: 1.5;
+    color: #585858;
+    font-weight: 500; 
+}
+.product-detaile__category{
+  font-size: .9rem;  
+}
+.product-detaile__price-add{
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+}
+.product-detaile__price{
+   font-size: 1rem;
+    font-weight: 800; 
+}
+.product-detaile__add-icon{
+    font-size: 1.4rem;
+    padding-right: 2rem;
+    cursor: pointer;
+}
+/* Product component style */
+=======
 .nav1-container {
     display: flex;
     width: 100%;
@@ -289,3 +335,4 @@
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-8px, -8px);
 }
+>>>>>>> main
