@@ -29,7 +29,6 @@ const createProductComponent = function(id, url, title, categorie, price) {
 
     const image = document.createElement("img")
     image.src = url
-    image.alt = alternative
     imageContainer.appendChild(image)
 
     const productDetails = document.createElement("div")
@@ -72,7 +71,7 @@ const createProductComponent = function(id, url, title, categorie, price) {
     productContainer.appendChild(productDetails)
     products.appendChild(productContainer)
 }
-const products1 = localStorage.getItem("Products")
+const products1 = JSON.parse(localStorage.getItem("Products"))
 products1.forEach(function(product) {
     createProductComponent(product.id, product.url, product.title, product.category, product.price)
 })
