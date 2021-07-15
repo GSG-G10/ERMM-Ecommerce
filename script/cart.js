@@ -1,6 +1,5 @@
 
 let cartProduct = JSON.parse(localStorage.getItem("Cart"))
-console.log(cartProduct)
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
 const createProductComponent = ({id,img:url,name:title,category,price}) => {
