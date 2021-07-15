@@ -1,4 +1,4 @@
-const data = [
+ const data = [
   {
     id: 0,
     name: "LEICA S (TYP 006)",
@@ -63,10 +63,13 @@ const data = [
     category: "SPORT",
   },
 ];
-// add this object to localStorage
-if (!localStorage.getItem("products"))
-  localStorage.setItem("products", JSON.stringify(data));
-// export data to use in the app
 if (typeof module !== "undefined") {
-  module.exports = data;
+  module.exports = {
+    data
+  };
 }
+// add this object to localStorage
+// if (!localStorage.getItem("products"))
+//   localStorage.setItem("products", JSON.stringify(data));
+// export data to use in the app
+

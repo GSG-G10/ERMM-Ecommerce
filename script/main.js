@@ -1,7 +1,8 @@
 // for any function that will re-use in other files, you can just use this
+ import {data} from './localStorage.js'
 const productsId = document.querySelector("#products");
 // this function for create one product as component 
-const createProductComponent = ({id, img:url, name:title, category, price}) => {
+const createProductComponent = ({category, id, img:image, name, price}) => {
     // container
     const productContainer = document.createElement("div")
     productContainer.setAttribute("class", `product  ${id}`)
@@ -21,7 +22,7 @@ const createProductComponent = ({id, img:url, name:title, category, price}) => {
     const productTitle = document.createElement("h3")
     productTitle.setAttribute("class", `product-detaile__title`)
     productTitle.setAttribute("id", `${id}-categorie`)
-    const text = document.createTextNode(`${title}`)
+    const text = document.createTextNode(`${name}`)
     productTitle.appendChild(text)
     // categhory 
     const productCategorie = document.createElement("h4")
@@ -36,31 +37,35 @@ const createProductComponent = ({id, img:url, name:title, category, price}) => {
     productPrice.setAttribute("class", `product-detaile__price`)
     const priceNode = document.createTextNode(`${price}`)
     productPrice.appendChild(priceNode)
+  /*************/
+    const addProductIcon = document.createElement("button")
+    addProductIcon.setAttribute("class", `product-detaile__add-icon`)
+    const addText = document.createTextNode('Add to cart')
+    addProductIcon.appendChild(addText)
+    addProductIcon.addEventListener('click', ()=>{
+        addtoCart(id)
+    })
 
-    // const addProductIcon = document.createElement("button")
-    // addProductIcon.setAttribute("class", `product-detaile__add-icon`)
-    // const addText = document.createTextNode('Add to cart')
-    // addProductIcon.appendChild(addText)
-    // addProductIcon.addEventListener('click', ()=>{
-    //     addtoCart(id)
-    // })
 
+    const iconShopping = document.createElement("i")
+    iconShopping.setAttribute("class", `icon-shopping-cart`)
+    addProductIcon.appendChild(iconShopping)
+    iconShopping.addEventListener('click', ()=>{
+        console.log(1)
+    })
 
-    // const iconShopping = document.createElement("i")
-    // iconShopping.setAttribute("class", `icon-shopping-cart`)
-    // addProductIcon.appendChild(iconShopping)
-    // iconShopping.addEventListener('click', ()=>{
-    //     console.log(1)
-    // })
+    productIcon.appendChild(productPrice)
+    productIcon.appendChild(addProductIcon)
 
-    // productIcon.appendChild(productPrice)
-    // productIcon.appendChild(addProductIcon)
-
-    // productDetails.appendChild(productTitle)
-    // productDetails.appendChild(productCategorie)
-    // productDetails.appendChild(productIcon)
-
-    // productContainer.appendChild(imageContainer)
-    // productContainer.appendChild(productDetails)
-    // products.appendChild(productContainer)
+    productDetails.appendChild(productTitle)
+    productDetails.appendChild(productCategorie)
+    productDetails.appendChild(productIcon)
+ /*****************/
+    productContainer.appendChild(imageContainer)
+    productContainer.appendChild(productDetails)
+    productsId.appendChild(productContainer)
 }
+console.log(data)
+data.forEach((product) => {
+    createProductComponent(product)
+})
