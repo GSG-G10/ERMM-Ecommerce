@@ -1,3 +1,6 @@
+
+let cartProduct = JSON.parse(localStorage.getItem("cart"))
+
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
 const createProductComponent = function(id,url,title,categorie,price){
@@ -39,9 +42,16 @@ const createProductComponent = function(id,url,title,categorie,price){
      const removeProductIcon = document.createElement("button")
      removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
     
-    const removeIcon = document.createElement("i")
+    const removeIcon = document.createElement("h")
     removeIcon.setAttribute("class",`icon-archive`)
+
+    const removeTest = document.createTextNode('hi')
+    removeIcon.appendChild(removeTest)
+
     removeProductIcon.appendChild(removeIcon)
+    removeIcon.addEventListener("click", () => {
+        deleteProductDisplay(id)
+    });
     //  deleteIcon.appendChild(removeIcon)
 
 
@@ -53,7 +63,34 @@ const createProductComponent = function(id,url,title,categorie,price){
     productContainer.appendChild(removeProductIcon)
     products.appendChild(productContainer)
 }
-const cartProduct = localStorage.getItem("cart")
 cartProduct.forEach(function(product){
     createProductComponent(product.id,product.url,product.title,product.category,product.price)
 })
+
+const cleardata = (myNode) => {
+    while (myNode.firstChild) {
+      myNode.removeChild(myNode.firstChild);
+    }
+  };
+
+function deleteProductDisplay (deletedId) {
+    cartProduct = JSON.parse(localStorage.getItem("cart"));
+    cartProduct = deletingProduct(deletedId, cartProduct);
+    localStorage.setItem("cart", JSON.stringify(cartProduct));
+    cleardata(products)
+    cartProduct.forEach((element) => {
+      createProductComponent(
+        element.id,
+        element.url,
+        element.title,
+        element.categorie,
+        element.price
+      );
+    });
+  }
+
+
+
+
+
+
