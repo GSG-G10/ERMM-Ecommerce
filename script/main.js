@@ -1,9 +1,4 @@
-const deletingProduct = (id, array) => {
-  const newArray = array.filter((ele) => {
-    return ele.id !== id;
-  });
-  return newArray;
-};
+const deletingProduct = (id, array) => array.filter((ele) =>  ele.id !== id);
 
 const addProduct = (products, product) => [...products, product];
 

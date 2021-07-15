@@ -3,7 +3,7 @@ let cartProduct = JSON.parse(localStorage.getItem("Cart"))
 console.log(cartProduct)
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
-const createProductComponent = function({id,img:url,name:title,category,price}){
+const createProductComponent = ({id,img:url,name:title,category,price}) => {
    const productContainer = document.createElement("div")
     productContainer.setAttribute("class",`product  ${id}`)
     
@@ -34,13 +34,8 @@ const createProductComponent = function({id,img:url,name:title,category,price}){
     const priceNode = document.createTextNode(`${price}`)
     productPrice.appendChild(priceNode)
    
-
-    // const deleteIcon = document.createElement("div")
-    // deleteIcon.setAttribute("class",`product__delete-product`)
-
-
-     const removeProductIcon = document.createElement("button")
-     removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
+    const removeProductIcon = document.createElement("button")
+    removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
     
     const removeIcon = document.createElement("h")
     removeIcon.setAttribute("class",`icon-archive`)

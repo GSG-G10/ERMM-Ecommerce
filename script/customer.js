@@ -20,8 +20,7 @@ const addtoCart = productId => {
 };
 //createProductComponent help you creating product component 
 const products = document.querySelector("#products");
-const createProductComponent = function({id, img:url, name:title, categorie, price}) {
-    console.log({id, url, title, categorie, price})
+const createProductComponent = ({id, img:url, name:title, category, price}) => {
     const productContainer = document.createElement("div")
     productContainer.setAttribute("class", `product  ${id}`)
 
@@ -31,6 +30,7 @@ const createProductComponent = function({id, img:url, name:title, categorie, pri
     const image = document.createElement("img")
     image.src = url
     imageContainer.appendChild(image)
+    productContainer.appendChild(imageContainer)
     image.style.width ="400px"
 
     const productDetails = document.createElement("div")
@@ -44,7 +44,7 @@ const createProductComponent = function({id, img:url, name:title, categorie, pri
 
     const productCategorie = document.createElement("h4")
     productCategorie.setAttribute("class", `product-detaile__category`)
-    const categorieNode = document.createTextNode(`${categorie}`)
+    const categorieNode = document.createTextNode(`${category}`)
     productCategorie.appendChild(categorieNode)
 
     const productIcon = document.createElement("div")
@@ -57,6 +57,8 @@ const createProductComponent = function({id, img:url, name:title, categorie, pri
 
     const addProductIcon = document.createElement("button")
     addProductIcon.setAttribute("class", `product-detaile__add-icon`)
+    const addText = document.createTextNode('Add to cart')
+    addProductIcon.appendChild(addText)
     addProductIcon.addEventListener('click', ()=>{
         addtoCart(id)
     })

@@ -3,6 +3,12 @@
     padding: 0;
 }
 
+#products{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+}
 .boddy {
   background-color: #6a8796;
   display: flex;
@@ -108,8 +114,8 @@ background-color: #fff;
     flex-direction: column;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
-    width: 20.33%;
-    margin: 5rem;
+    width: 25%;
+    margin: 5rem 0;
     padding: 1rem;
     transition: all .3s;
     border-radius: 5px;
@@ -118,7 +124,7 @@ background-color: #fff;
 .product:hover{
     box-shadow: 0 3px 5px 0 rgb(0 0 0 / 50%);
 }
-.product__image{
+.product__image img{
     max-width: 100%;
 }
 .product-detaile__title{

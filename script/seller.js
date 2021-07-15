@@ -28,16 +28,15 @@ const addproductJson = () => {
     tempProduct.price = pPrice;
     tempProduct.category = pCategory;
     addProductDom(JSON.stringify(tempProduct));
-    // window.location.href = ".\\seller.html" 
+    window.location.href = ".\\seller.html" 
 };
 
 
 const allProducts = JSON.parse(localStorage.getItem("Products"))
-console.log(allProducts)
+
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
-const createProductComponent = function({id,img,name:title,category,price}){
-    console.log(img,1)
+const createProductComponent = ({id,img,name:title,category,price}) => {
    const productContainer = document.createElement("div")
     productContainer.setAttribute("class",`product  ${id}`)
 
@@ -69,6 +68,9 @@ const createProductComponent = function({id,img,name:title,category,price}){
     
    const editProductIcon = document.createElement("button")
     editProductIcon.setAttribute("class",`product-detaile__edit-icon`)
+    const editText = document.createTextNode('edit')
+    editProductIcon.appendChild(editText)
+    
 
     const iconEdit = document.createElement("i")
     iconEdit.setAttribute("class",`icon-edit`)
@@ -77,13 +79,16 @@ const createProductComponent = function({id,img,name:title,category,price}){
 
     const removeProductIcon = document.createElement("button")
     removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
+    const removeText = document.createTextNode('delete')
+    removeProductIcon.appendChild(removeText)
+    removeProductIcon.addEventListener("click", () => {
+      deleteProductDisplay(id)
+  });
 
     const iconRemove = document.createElement("i")
     iconRemove.setAttribute("class",`icon-archive`)
     removeProductIcon.appendChild(iconRemove)
-        iconRemove.addEventListener("click", () => {
-        deleteProductDisplay(id)
-    });
+    
 
     productIcon.appendChild(editProductIcon)
     productIcon.appendChild(removeProductIcon)
@@ -98,7 +103,6 @@ const createProductComponent = function({id,img,name:title,category,price}){
 }
 
 allProducts.forEach(function(product){
-    console.log(product)
     createProductComponent(product)
 })
 
@@ -109,18 +113,12 @@ const cleardata = (myNode) => {
   };
 
 function deleteProductDisplay (deletedId) {
-    const allProducts = JSON.parse(localStorage.getItem("products"));
+    let allProducts = JSON.parse(localStorage.getItem("Products"));
     allProducts = deletingProduct(deletedId, allProducts);
-    localStorage.setItem("products", JSON.stringify(allProducts));
+    localStorage.setItem("Products", JSON.stringify(allProducts));
     cleardata(products)
     allProducts.forEach((element) => {
-      createProductComponent(
-        element.id,
-        element.url,
-        element.title,
-        element.categorie,
-        element.price
-      );
+      createProductComponent(element);
     });
   }
 
