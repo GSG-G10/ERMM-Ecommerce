@@ -1,4 +1,6 @@
 const {deletingProduct} = require('./script/main');
+const { addProduct } = require("./script/main");
+
 describe('Deleting items object from products array', () => {
     test('Should return [] when given (0, [{id:0, name:camera-2a, price:2$, category:cameras}])', () => { 
         const actual = deletingProduct(0,[{id:0, name:'camera-2a', price:'2$', category:'cameras'}]);
@@ -11,7 +13,6 @@ describe('Deleting items object from products array', () => {
         expect(actual).toEqual(expected);
     })
 })
-const { addProduct } = require("./script/main");
 
 const addProductTests = [{
         products: [{

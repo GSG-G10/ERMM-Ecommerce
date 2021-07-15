@@ -20,7 +20,7 @@ const addtoCart = productId => {
 };
 //createProductComponent help you creating product component 
 const products = document.querySelector("#products");
-const createProductComponent = function(id, url, title, categorie, price) {
+const createProductComponent = ({id, img:url, name:title, category, price}) => {
     const productContainer = document.createElement("div")
     productContainer.setAttribute("class", `product  ${id}`)
 
@@ -29,8 +29,9 @@ const createProductComponent = function(id, url, title, categorie, price) {
 
     const image = document.createElement("img")
     image.src = url
-    image.alt = alternative
     imageContainer.appendChild(image)
+    productContainer.appendChild(imageContainer)
+    image.style.width ="400px"
 
     const productDetails = document.createElement("div")
     productDetails.setAttribute("class", `product__product-detaile`)
@@ -43,7 +44,7 @@ const createProductComponent = function(id, url, title, categorie, price) {
 
     const productCategorie = document.createElement("h4")
     productCategorie.setAttribute("class", `product-detaile__category`)
-    const categorieNode = document.createTextNode(`${categorie}`)
+    const categorieNode = document.createTextNode(`${category}`)
     productCategorie.appendChild(categorieNode)
 
     const productIcon = document.createElement("div")
@@ -56,10 +57,19 @@ const createProductComponent = function(id, url, title, categorie, price) {
 
     const addProductIcon = document.createElement("button")
     addProductIcon.setAttribute("class", `product-detaile__add-icon`)
+    const addText = document.createTextNode('Add to cart')
+    addProductIcon.appendChild(addText)
+    addProductIcon.addEventListener('click', ()=>{
+        addtoCart(id)
+    })
+
 
     const iconShopping = document.createElement("i")
     iconShopping.setAttribute("class", `icon-shopping-cart`)
     addProductIcon.appendChild(iconShopping)
+    iconShopping.addEventListener('click', ()=>{
+        console.log(1)
+    })
 
     productIcon.appendChild(productPrice)
     productIcon.appendChild(addProductIcon)
@@ -72,7 +82,8 @@ const createProductComponent = function(id, url, title, categorie, price) {
     productContainer.appendChild(productDetails)
     products.appendChild(productContainer)
 }
-const products1 = localStorage.getItem("Products")
+const products1 = JSON.parse(localStorage.getItem("Products"))
 products1.forEach(function(product) {
-    createProductComponent(product.id, product.url, product.title, product.category, product.price)
+    // console.log(product)
+    createProductComponent(product)
 })

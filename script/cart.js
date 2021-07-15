@@ -1,9 +1,9 @@
 
-let cartProduct = JSON.parse(localStorage.getItem("cart"))
-
+let cartProduct = JSON.parse(localStorage.getItem("Cart"))
+console.log(cartProduct)
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
-const createProductComponent = function(id,url,title,categorie,price){
+const createProductComponent = ({id,img:url,name:title,category,price}) => {
    const productContainer = document.createElement("div")
     productContainer.setAttribute("class",`product  ${id}`)
     
@@ -12,7 +12,7 @@ const createProductComponent = function(id,url,title,categorie,price){
 
     const image = document.createElement("img")
     image.src = url
-    image.alt = title +  categorie
+    image.alt = title +  category
    imageContainer.appendChild(image)
 
     const productDetails = document.createElement("div")
@@ -26,7 +26,7 @@ const createProductComponent = function(id,url,title,categorie,price){
 
     const productCategorie = document.createElement("h4")
     productCategorie.setAttribute("class",`product-detaile__category`)
-    const categorieNode = document.createTextNode(`${categorie}`)
+    const categorieNode = document.createTextNode(`${category}`)
     productCategorie.appendChild(categorieNode)
     
     const productPrice = document.createElement("span")
@@ -34,18 +34,13 @@ const createProductComponent = function(id,url,title,categorie,price){
     const priceNode = document.createTextNode(`${price}`)
     productPrice.appendChild(priceNode)
    
-
-    // const deleteIcon = document.createElement("div")
-    // deleteIcon.setAttribute("class",`product__delete-product`)
-
-
-     const removeProductIcon = document.createElement("button")
-     removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
+    const removeProductIcon = document.createElement("button")
+    removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
     
     const removeIcon = document.createElement("h")
     removeIcon.setAttribute("class",`icon-archive`)
 
-    const removeTest = document.createTextNode('hi')
+    const removeTest = document.createTextNode('delete')
     removeIcon.appendChild(removeTest)
 
     removeProductIcon.appendChild(removeIcon)
@@ -64,7 +59,7 @@ const createProductComponent = function(id,url,title,categorie,price){
     products.appendChild(productContainer)
 }
 cartProduct.forEach(function(product){
-    createProductComponent(product.id,product.url,product.title,product.category,product.price)
+    createProductComponent(product)
 })
 
 const cleardata = (myNode) => {
@@ -74,18 +69,12 @@ const cleardata = (myNode) => {
   };
 
 function deleteProductDisplay (deletedId) {
-    cartProduct = JSON.parse(localStorage.getItem("cart"));
+    cartProduct = JSON.parse(localStorage.getItem("Cart"));
     cartProduct = deletingProduct(deletedId, cartProduct);
-    localStorage.setItem("cart", JSON.stringify(cartProduct));
+    localStorage.setItem("Cart", JSON.stringify(cartProduct));
     cleardata(products)
     cartProduct.forEach((element) => {
-      createProductComponent(
-        element.id,
-        element.url,
-        element.title,
-        element.categorie,
-        element.price
-      );
+      createProductComponent(element);
     });
   }
 

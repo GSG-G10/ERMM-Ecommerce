@@ -6,6 +6,7 @@ const fetchProduct = stringProduct => JSON.parse(stringProduct);
 
 const addProductDom = stringProduct => {
     let tempProducts = fetchProducts();
+    console.log(tempProducts)
     const tempProduct = fetchProduct(stringProduct);
     tempProduct.id = prodcutsId++;
     localStorage.setItem("id", prodcutsId);
@@ -17,6 +18,8 @@ const addProductDom = stringProduct => {
 const addproductJson = () => {
     const pName = document.querySelector(".add-form #name").value;
     const pImg = document.querySelector(".add-form #img").value;
+    console.log(document.querySelector(".add-form #img"))
+    console.log(pImg)
     const pPrice = document.querySelector(".add-form #price").value;
     const pCategory = document.querySelector(".add-form #Category").value;
     const tempProduct = {};
@@ -25,13 +28,15 @@ const addproductJson = () => {
     tempProduct.price = pPrice;
     tempProduct.category = pCategory;
     addProductDom(JSON.stringify(tempProduct));
+    window.location.href = ".\\seller.html" 
 };
 
 
-const allProducts = localStorage.getItem("products")
+const allProducts = JSON.parse(localStorage.getItem("Products"))
+
 //createProductComponent help you creating product component 
 const products =  document.querySelector("#products");
-const createProductComponent = function(id,url,title,categorie,price){
+const createProductComponent = ({id,img,name:title,category,price}) => {
    const productContainer = document.createElement("div")
     productContainer.setAttribute("class",`product  ${id}`)
 
@@ -39,8 +44,9 @@ const createProductComponent = function(id,url,title,categorie,price){
     imageContainer.setAttribute("class",`product__image`)
 
     const image = document.createElement("img")
-    image.src = url
-    image.alt = title + categorie
+    image.src = img
+    image.style.width = "400px"
+    image.alt = title + category
    imageContainer.appendChild(image)
 
     const productDetails = document.createElement("div")
@@ -54,7 +60,7 @@ const createProductComponent = function(id,url,title,categorie,price){
 
     const productCategorie = document.createElement("h4")
     productCategorie.setAttribute("class",`product-detaile__category`)
-    const categorieNode = document.createTextNode(`${categorie}`)
+    const categorieNode = document.createTextNode(`${category}`)
     productCategorie.appendChild(categorieNode)
 
     const productIcon = document.createElement("div")
@@ -62,20 +68,27 @@ const createProductComponent = function(id,url,title,categorie,price){
     
    const editProductIcon = document.createElement("button")
     editProductIcon.setAttribute("class",`product-detaile__edit-icon`)
+    const editText = document.createTextNode('edit')
+    editProductIcon.appendChild(editText)
+    
 
     const iconEdit = document.createElement("i")
     iconEdit.setAttribute("class",`icon-edit`)
     editProductIcon.appendChild(iconEdit)
+    productIcon.appendChild(editProductIcon)
 
     const removeProductIcon = document.createElement("button")
     removeProductIcon.setAttribute("class",`product-detaile__remove-icon`)
+    const removeText = document.createTextNode('delete')
+    removeProductIcon.appendChild(removeText)
+    removeProductIcon.addEventListener("click", () => {
+      deleteProductDisplay(id)
+  });
 
     const iconRemove = document.createElement("i")
     iconRemove.setAttribute("class",`icon-archive`)
     removeProductIcon.appendChild(iconRemove)
-        removeIcon.addEventListener("click", () => {
-        deleteProductDisplay(id)
-    });
+    
 
     productIcon.appendChild(editProductIcon)
     productIcon.appendChild(removeProductIcon)
@@ -89,8 +102,8 @@ const createProductComponent = function(id,url,title,categorie,price){
     products.appendChild(productContainer)
 }
 
-products.forEach(function(product){
-    createProductComponent(product.id,product.url,product.title,product.category,product.price)
+allProducts.forEach(function(product){
+    createProductComponent(product)
 })
 
 const cleardata = (myNode) => {
@@ -100,18 +113,12 @@ const cleardata = (myNode) => {
   };
 
 function deleteProductDisplay (deletedId) {
-    const allProducts = JSON.parse(localStorage.getItem("products"));
+    let allProducts = JSON.parse(localStorage.getItem("Products"));
     allProducts = deletingProduct(deletedId, allProducts);
-    localStorage.setItem("products", JSON.stringify(allProducts));
+    localStorage.setItem("Products", JSON.stringify(allProducts));
     cleardata(products)
     allProducts.forEach((element) => {
-      createProductComponent(
-        element.id,
-        element.url,
-        element.title,
-        element.categorie,
-        element.price
-      );
+      createProductComponent(element);
     });
   }
 
