@@ -114,7 +114,3 @@ function deleteProductDisplay (deletedId) {
       );
     });
   }
-
-
-
-
