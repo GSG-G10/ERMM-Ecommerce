@@ -4,7 +4,9 @@ const {
 const {
     getProduct,
     addProduct,
-    deletingProduct
+    deletingProduct,
+    filterProductByCategorie,
+    filterProductByPrice
 } = require("./script/utils.js");
 const virtualNewProduct = {
     id: 5,
@@ -28,18 +30,24 @@ describe('Testing getProduct return specific product', () => {
     //     expect(actual).toEqual(expected);
 
     // })
-    // // add product tests
+    // // // add product tests
     // test('Should add new product for data array', () => {
     //     const actual =addProduct(data, virtualNewProduct);
     //     const expected = [...data, virtualNewProduct];
     //     expect(actual).toEqual(expected);
 
     // })
-    // dalete product tests
-    test('Should delete product index of 2 from data array', () => {
-        const actual =deletingProduct(2, data);
-        const expected = data.filter((ele,index) => index !== 2);
-        expect(actual).toEqual(expected);
+    // // dalete product tests
+    // test('Should delete product index of 2 from data array', () => {
+    //     const actual =deletingProduct(2, data);
+    //     const expected = data.filter((ele,index) => index !== 2);
+    //     expect(actual).toEqual(expected);
 
+    // })
+    // filter product tests
+    test('Should filter product by category', () => {
+        const actual =filterProductByCategorie(data, "ACCESSORIES");
+        const expected = data.filter(ele => ele.category === "ACCESSORIES");
+        expect(actual).toEqual(expected);
     })
 });

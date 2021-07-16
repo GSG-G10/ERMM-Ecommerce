@@ -6,10 +6,19 @@ const getProduct = (nameProduct, arrayOfData) => {
     let product = arrayOfData.filter(x => x.name.includes(nameProduct));
     return product;
 }
+const filterProductBy=(which)=>{
+    return (data,specific)=>{
+        return data.filter(x=>x[which]===specific);
+    }
+}
+const filterProductByCategorie=filterProductBy('category');
+const filterProductByPrice=filterProductBy('price');
 if (typeof module !== "undefined") {
     module.exports = {
         getProduct,
         addProduct,
-        deletingProduct
+        deletingProduct,
+        filterProductByCategorie,
+        filterProductByPrice
     };
 }
