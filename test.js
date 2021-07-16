@@ -43,7 +43,7 @@ describe('Testing getProduct return specific product', () => {
         const expected = data.filter((ele,index) => index !== 2);
         expect(actual).toEqual(expected);
 
-    // })
+     })
     // filter product tests
     test('Should filter product by category', () => {
         const actual =filterProductByCategorie(data, "ACCESSORIES");
@@ -58,3 +58,6 @@ describe('Testing getProduct return specific product', () => {
         expect(actual).toEqual(expected);
     })
 });
+
+
+

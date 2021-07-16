@@ -1,8 +1,9 @@
 // for any function that will re-use in other files, you can just use this
  import {data} from './localStorage.js'
-const productsId = document.querySelector("#products");
+const productsId = document.querySelector("#products-container");
 // this function for create one product as component 
-const createProductComponent = ({category, id, img:image, name, price}) => {
+const createProductComponent = ({category, id, url, name, price}) => {
+  
     // container
     const productContainer = document.createElement("div")
     productContainer.setAttribute("class", `product  ${id}`)
@@ -10,11 +11,11 @@ const createProductComponent = ({category, id, img:image, name, price}) => {
     const imageContainer = document.createElement("div")
     imageContainer.setAttribute("class", `product__image`)
 
-    const image = document.createElement("img")
-    image.src = url
-    imageContainer.appendChild(image)
+    const imageTag = document.createElement("img")
+    imageTag.src = url
+    imageContainer.appendChild(imageTag)
     productContainer.appendChild(imageContainer)
-    image.style.width ="400px"
+    imageTag.style.width ="400px"
     // for any detail about product 
     const productDetails = document.createElement("div")
     productDetails.setAttribute("class", `product__product-detaile`)
@@ -65,7 +66,8 @@ const createProductComponent = ({category, id, img:image, name, price}) => {
     productContainer.appendChild(productDetails)
     productsId.appendChild(productContainer)
 }
-console.log(data)
+console.log(data,";;;;;;;;;;;")
 data.forEach((product) => {
+  console.log(product)
     createProductComponent(product)
 })
