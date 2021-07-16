@@ -8,6 +8,8 @@ const getProduct = (nameProduct, arrayOfData) => {
 }
 const filterProductBy=(which)=>{
     return (data,specific)=>{
+        if(which==='price')
+            return data.filter(x=>x.price<=specific);
         return data.filter(x=>x[which]===specific);
     }
 }
