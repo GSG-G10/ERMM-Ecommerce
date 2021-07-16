@@ -1,19 +1,16 @@
-/* Product component style */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+img {
+    max-width: 100%;
 }
-img{
-    max-width:100%;
-}
-#products{
+
+#products {
     display: flex;
     flex-wrap: wrap;
     width: 90%;
     justify-content: center;
 }
-.product{
+
+.product {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,51 +22,61 @@ img{
     border-radius: 5px;
     cursor: pointer;
 }
-.product:hover{
+
+.product:hover {
     box-shadow: 0 3px 5px 0 rgb(0 0 0 / 50%);
 }
-.product-detaile__title{
-   font-size: 1.8rem;
+
+.product-detaile__title {
+    font-size: 1.8rem;
     line-height: 1.5;
     color: #585858;
-    font-weight: 500; 
+    font-weight: 500;
 }
-.product-detaile__category{
-  font-size: 1.2rem;
+
+.product-detaile__category {
+    font-size: 1.2rem;
 }
-.product-detaile__price-add{
+
+.product-detaile__price-add {
     color: #000;
     display: flex;
     justify-content: space-between;
 }
-.product-detaile__price{
-   font-size: 1rem;
-    font-weight: 800; 
+
+.product-detaile__price {
+    font-size: 1rem;
+    font-weight: 800;
 }
-.product-detaile__add-icon{
+
+.product-detaile__add-icon {
     font-size: 1.4rem;
     padding-right: 2rem;
     cursor: pointer;
 }
+
 .product-detaile__info {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.product__delete-product{
-   font-size: 3rem;
+.product__delete-product {
+    font-size: 3rem;
     width: 12%;
     display: flex;
     justify-content: flex-end;
 }
-.product-detaile__remove-icon{
+
+.product-detaile__remove-icon {
     background: transparent;
     border: none;
 }
-.product-detaile__remove-icon i:hover{
-    color:red
+
+.product-detaile__remove-icon i:hover {
+    color: red
 }
+
 /* Product component style */
 .nav1-container {
     display: flex;
@@ -280,55 +287,71 @@ img{
     .nav1 {
         flex-direction: column;
     }
+
     .nav1 li {
         width: 100%;
         max-width: none;
     }
+
     #dropdown-items {
         width: 100px;
     }
+
     #dropdown-items1 {
         width: 100px;
     }
+
     .active {
         margin-top: 3px;
     }
+
     #dropdown-items a {
         top: 35px;
     }
+
     #dropdown-items1 a {
         top: 35px;
     }
+
     .dropbtn {
         position: static;
     }
+
     .dropbtn1 {
         position: static;
     }
+
     .dropdown {
         display: flex;
         justify-content: center;
     }
+
     .dropdown1 {
         display: flex;
         justify-content: center;
     }
+
     .nav1 li:not(.active) {
         display: none;
     }
+
     .icon1 {
         display: block;
     }
+
     #search {
         width: 100%;
         min-width: 0;
     }
+
     #search input {
         width: 90%;
     }
+
     .active {
         order: -1;
     }
+
     .responsive li:not(.active) {
         display: flex !important;
     }

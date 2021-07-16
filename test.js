@@ -1,171 +1,63 @@
-const {deletingProduct} = require('./script/main');
-const { addProduct } = require("./script/main");
+const {
+    data
+} = require("./script/localStorage.js");
+const {
+    getProduct,
+    addProduct,
+    deletingProduct,
+    filterProductByCategorie,
+    filterProductByPrice
+} = require("./script/utils.js");
+const virtualNewProduct = {
+    id: 5,
+    name: "LEICA RM",
+    price: 310,
+    image: "https://cdn.shopify.com/s/files/1/0543/1637/products/TBPhotography_ed644957-8545-4b4f-88df-213d442ee767_540x.jpg",
+    category: "ACCESSORIES",
+}
+const virtualSearchProduct = [{
+    id: 3,
+    name: "LEICA R ADAPTER M",
+    price: 310,
+    image: "https://cdn.shopify.com/s/files/1/0543/1637/products/TBPhotography_ed644957-8545-4b4f-88df-213d442ee767_540x.jpg",
+    category: "ACCESSORIES",
+}]
+describe('Testing getProduct return specific product', () => {
+    // search specific product
+    test('Should return array of product when given value search', () => {
+        const actual = getProduct("LEICA R ADAPTER M", data);
+        const expected =virtualSearchProduct ;
+        expect(actual).toEqual(expected);
 
-describe('Deleting items object from products array', () => {
-    test('Should return [] when given (0, [{id:0, name:camera-2a, price:2$, category:cameras}])', () => { 
-        const actual = deletingProduct(0,[{id:0, name:'camera-2a', price:'2$', category:'cameras'}]);
-        const expected = [];
+    })
+    // // add product tests
+    test('Should add new product for data array', () => {
+        const actual =addProduct(data, virtualNewProduct);
+        const expected = [...data, virtualNewProduct];
+        expect(actual).toEqual(expected);
+
+    })
+    // dalete product tests
+    test('Should delete product index of 2 from data array', () => {
+        const actual =deletingProduct(2, data);
+        const expected = data.filter((ele,index) => index !== 2);
+        expect(actual).toEqual(expected);
+
+     })
+    // filter product tests
+    test('Should filter product by category', () => {
+        const actual =filterProductByCategorie(data, "ACCESSORIES");
+        const expected = data.filter(ele => ele.category === "ACCESSORIES");
         expect(actual).toEqual(expected);
     })
-    test('Should return [{id:0, name:camera-2a, price:2$, category:cameras}] when given (1, [{id:0, name:camera-2a, price:2$, category:cameras}, {id:1, name:caffmera-2a, price:24$, category:cameras}])', () =>{
-        const actual = deletingProduct(1,[{id:0, name:'camera-2a', price:'2$', category:'cameras'}, {id:1, name:'caffmera-2a', price:'24$', category:'cameras'}]);
-        const expected = [{id:0, name:'camera-2a', price:'2$', category:'cameras'}];
+    
+    // filter product tests by price
+    test('Should filter product by price', () => {
+        const actual =filterProductByPrice(data, 25);
+        const expected = data.filter(ele => ele.price <= 25);
         expect(actual).toEqual(expected);
     })
-})
-
-const addProductTests = [{
-        products: [{
-            id: 0,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 1,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }],
-
-        product: {
-            id: 2,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        },
-
-        expected: [{
-            id: 0,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 1,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 2,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }]
-    },
-    {
-        products: [],
-
-        product: {
-            id: 2,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        },
-
-        expected: [{
-            id: 2,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }]
-    },
-    {
-        products: [{
-            id: 0,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 1,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 2,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }],
-
-        product: {
-            id: 3,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        },
-
-        expected: [{
-            id: 0,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 1,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 2,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 3,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }]
-    },
-    {
-        products: [{
-            id: 0,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 1,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 2,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 3,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }],
-        product: {},
-        expected: [{
-            id: 0,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 1,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 2,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {
-            id: 3,
-            name: "T-shirt",
-            details: ".....",
-            price: 25
-        }, {}]
-    },
-];
-
-
-describe('test add product function', () => {
-    for (let i = 0; i < addProductTests.length; i++)
-        test('test1', () => {
-            expect(addProduct(addProductTests[i].products, addProductTests[i].product)).toEqual(addProductTests[i].expected);
-        });
 });
+
+
+
